@@ -1,28 +1,32 @@
 <div layout-padding>
-    <md-content layout="row" layout-align="start center" layout-wrap>
+    
+    <section layout="row" layout-align="start center" layout-wrap>
         <md-button class="md-fab md-mini" ng-click="removeNode()" aria-label="remove node">
             <i class="fa fa-trash-o"></i>
         </md-button>
-        <md-switch style="width: 120px" ng-model="treeNode.is_enabled" aria-label="Is the node enabled?" ng-change="toggleEntry();">
+        <md-switch ng-model="treeNode.is_enabled" aria-label="Is the node enabled?" ng-change="toggleEntry();">
             {{UI.enabled_caption}}
         </md-switch>
-        <md-switch style="width: 120px" ng-model="treeNode.is_container_type" aria-label="Is it a container type?" ng-change="toggleContainerType();">
+        <md-switch ng-model="treeNode.is_container_type" aria-label="Is it a container type?" ng-change="toggleContainerType();">
             {{UI.container_type_caption}}
-        </md-switch>
-        <md-input-container flex="66">
+        </md-switch>        
+        <md-input-container style="min-width: 300px;" flex>
             <label> Description </label>
             <input ng-model="treeNode.desc" ng-change="treeData.updateJson();"/>
         </md-input-container>
-    </md-content>
-    <md-content layout="column" ng-if="treeNode.is_container_type">
+    </section>       
+    
+    <section layout="column" ng-if="treeNode.is_container_type">
         <tree-container tree-data="treeData" tree-node="treeNode.children" parent-node="treeNode" offset="10"></tree-container>
-    </md-content>
-    <md-content layout="row" ng-if="!treeNode.is_container_type" layout-wrap>
-        <md-input-container style="width: 180px">
-            <input ng-model="treeNode.offset" ng-change="treeData.updateJson();" placeholder="add offset in hex" ng-disabled="!treeNode.is_enabled"/>
+    </section>
+
+    <section layout="row" layout-sm="column" ng-if="!treeNode.is_container_type" layout-align="start center" layout-margin layout-wrap>
+        <md-input-container style="width: 120px; margin: 8px" md-no-float>
+            <input ng-model="treeNode.offset" ng-change="treeData.updateJson();" placeholder="hex offset" ng-disabled="!treeNode.is_enabled"/>
         </md-input-container>
-        <md-input-container flex="66">
-            <input ng-model="treeNode.value" ng-change="treeData.updateJson();" placeholder="add value in hex" ng-disabled="!treeNode.is_enabled"/>
+        <md-input-container style="min-width: 500px" flex md-no-float>
+            <input ng-model="treeNode.value" ng-change="treeData.updateJson();" placeholder="hex value" ng-disabled="!treeNode.is_enabled"/>
         </md-input-container>
-    </md-content>
+    </section>
+    
 </div>
