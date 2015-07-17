@@ -20,12 +20,15 @@
         <tree-container tree-data="treeData" tree-node="treeNode.children" parent-node="treeNode" offset="10"></tree-container>
     </section>
 
-    <section layout="row" layout-sm="column" ng-if="!treeNode.is_container_type" layout-align="start center" layout-margin layout-wrap>
+    <section layout="row" layout-sm="column" ng-if="!treeNode.is_container_type" _layout-align="start center" layout-margin layout-wrap>
         <md-input-container style="width: 120px; margin: 8px" md-no-float>
             <input ng-model="treeNode.offset" ng-change="treeData.updateJson();" placeholder="hex offset" ng-disabled="!treeNode.is_enabled"/>
         </md-input-container>
         <md-input-container style="min-width: 500px" flex md-no-float>
             <input ng-model="treeNode.value" ng-change="treeData.updateJson();" placeholder="hex value" ng-disabled="!treeNode.is_enabled"/>
+        </md-input-container>
+        <md-input-container style="min-width: 500px" flex >
+            <textarea placeholder="Preview" disabled>{{treeNode.value | byteify}}</textarea>
         </md-input-container>
     </section>
     
