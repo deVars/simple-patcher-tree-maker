@@ -21,22 +21,24 @@
           <span>Simple Patcher Tree Maker</span>
         </h2>
         <span flex></span>
-        <md-button ng-click="togglePrettify()" aria-label="Toggle Prettify JSON">
-          Toggle Prettify JSON
+        <md-button ng-click="toggleJSONView()" aria-label="Toggle JSON View">
+          Toggle JSON View
         </md-button>
-        <md-button ng-click="loadJSON($event)" aria-label="Toggle Prettify JSON">
+        <md-button ng-click="loadJSON($event)" aria-label="Load JSON">
           Load JSON
         </md-button>
       </div>
     </md-toolbar>
     <section layout="row">
-        <md-container layout="column" flex="66">
+        <md-container layout="column" flex>
             <tree-container tree-data="data.tree" tree-node="data.tree.root" parent-node="null" layout-padding></tree-container>
         </md-container>
+    </section>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="json-view">
         <md-input-container layout="column" flex>
             <textarea ng-model="data.tree.json" aria-label="JSON format" disabled></textarea>
         </md-input-container>
-    </section>
+    </md-sidenav>
 
     <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.min.js"></script>

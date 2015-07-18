@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				}
 			},
 			html: {
-				files: ['templates/**/*.html', 'templates/*.html'],
+				files: ['views/**/*.html', 'views/*.html', 'index.html', 'index.release.html'],
 				tasks: ['htmlmin'],
 				options: {
 					debounceDelay: 500,
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 					collapseWhitespace: true,
 				},
 				files: {
-					src: 'templates/**/*.html',
+					src: 'views/**/*.html',
 					dest: 'release/'
 				}
 			}
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 			options: {},
 			default_target: {
 				files: {
-					'release/css/app.min.css': ['css/app.css']
+					'release/css/app.min.css': ['css/*.css', 'css/**/*.css']
 				}
 			}
 		},
@@ -60,9 +60,7 @@ module.exports = function(grunt) {
 				files: {
 					'release/js/app.min.js': [
 						'js/app.js',
-						'js/services/*.js', 
-						'js/controllers/*.js', 
-						'js/directives/*.js'
+						'js/**/*.js'
 					]
 				}
 			}
