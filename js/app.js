@@ -165,6 +165,8 @@ app.controller('mainCtrl', ['$scope', '$mdDialog', '$timeout', function($scope, 
 	// console.debug($scope.treeNode);
 	updateEntryCaption();
 	updateSwitchCaption();
+	$scope.treeNode.$preview = '"' + $scope.treeNode.desc + '"' + '  ' + 
+		$scope.treeNode.offset + ' : ' + $scope.treeNode.value;
 
 	$scope.removeNode = function() {
 		$scope.treeData.deleteNode($scope.treeNode.$$parents, $scope.treeData.root, $scope.treeNode.$$hashKey);
@@ -196,6 +198,18 @@ app.controller('mainCtrl', ['$scope', '$mdDialog', '$timeout', function($scope, 
 }])
 
 .directive('treeEntry', ['$compile', '$http', '$sce', function($compile, $http, $sce) {
+	var templateUrl = $sce.getTrustedResourceUrl('./templates/treeEntry.html');
+	var htmlTreeTemplate = null;
+
+	if (htmlTreeTemplate == null) {
+		$http
+			.get(templateUrl)
+			.then(function(result) {
+				htmlTreeTemplate = $sce.getTrustedHtml($sce.trustAsHtml(result.data));
+				// instanceElement.append($compile(htmlTreeTemplate)(scope));
+			});	
+	}
+
 	return {
 		restrict: 'E',
 		controller: 'treeEntryCtrl',
@@ -207,13 +221,9 @@ app.controller('mainCtrl', ['$scope', '$mdDialog', '$timeout', function($scope, 
 			return {
 				pre: function(scope, instanceElement, instanceAttributes, controller) {},
 				post: function(scope, instanceElement, instanceAttributes, controller) {
-					var templateUrl = $sce.getTrustedResourceUrl('./templates/treeEntry.html');
-					$http
-						.get(templateUrl)
-						.then(function(result) {
-							var htmlTemplate = angular.element($sce.getTrustedHtml($sce.trustAsHtml(result.data)));
-							instanceElement.append($compile(htmlTemplate)(scope));
-						});
+					var anElement = angular.element(htmlTreeTemplate);
+					console.debug(anElement);
+					instanceElement.append($compile(anElement)(scope));
 				}
 			};
 		}
