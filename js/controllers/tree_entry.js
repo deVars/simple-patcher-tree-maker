@@ -73,6 +73,7 @@ app.controller('treeEntryCtrl', ['$mdDialog', '$scope', function($mdDialog, $sco
 			$scope.treeNode.desc = result.desc;
 			$scope.treeNode.offset = result.offset;
 			$scope.treeNode.value = result.value;
+			$scope.treeData.updateJson();
 		});
 	};
 
