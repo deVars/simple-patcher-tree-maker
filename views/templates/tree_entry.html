@@ -21,7 +21,7 @@
     </section>       
     
     <section layout="column" ng-if="treeNode.is_container_type">
-        <tree-container tree-data="treeData" tree-node="treeNode.children" parent-node="treeNode" offset="10"></tree-container>
+        <tree-container style="margin-left: 64px;" tree-data="treeData" tree-node="treeNode.children" parent-node="treeNode"></tree-container>
     </section>
 
     <md-whiteframe ng-if="!treeNode.is_container_type" class="md-whiteframe-z2 node-entry" layout="row" layout-sm="column" layout-align="start center" offset="5" layout-padding>

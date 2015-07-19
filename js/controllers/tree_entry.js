@@ -37,11 +37,11 @@ app.controller('treeEntryCtrl', ['$mdDialog', '$scope', function($mdDialog, $sco
 			}
 			
 		},
-		editEntry = ['$scope', '$mdDialog', function($scope, $mdDialog) {
+		editEntry = ['$scope', '$mdDialog', 'originalValues', function($scope, $mdDialog, originalValues) {
 			$scope.data = {
-				desc: '',
-				offset: '',
-				value: ''
+				desc: originalValues.desc || '',
+				offset: originalValues.offset || '',
+				value: originalValues.value || ''
 			};
 
 			$scope.load = function() {
@@ -61,7 +61,14 @@ app.controller('treeEntryCtrl', ['$mdDialog', '$scope', function($mdDialog, $sco
 		$mdDialog.show({
 			controller: editEntry,
 			templateUrl: './views/dialogs/edit_entry.html',
-			targetEvent: ev
+			targetEvent: ev,
+			locals: {
+				originalValues: {
+					desc: $scope.treeNode.desc,
+					offset: $scope.treeNode.offset,
+					value: $scope.treeNode.value
+				}
+			}
 		}).then(function(result) {
 			$scope.treeNode.desc = result.desc;
 			$scope.treeNode.offset = result.offset;
