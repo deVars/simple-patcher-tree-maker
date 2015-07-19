@@ -11,14 +11,12 @@ md-input-container textarea.md-input {
 	color: #606060;
 }
 
-.node-offset {
+.json-view, .node-offset {
 	font-family: "monospace";
-	font-size: larger;
 	margin-left: 6px;
 }
 
 .node-value {
 	font-family: "monospace";
-	font-size: larger;
 	margin-left: 12px;
 }
