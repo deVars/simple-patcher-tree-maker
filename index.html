@@ -21,9 +21,6 @@
           <span>Simple Patcher Tree Maker</span>
         </h2>
         <span flex></span>
-        <md-button ng-click="toggleJSONView()" aria-label="Toggle JSON View">
-          Toggle JSON View
-        </md-button>
         <md-button ng-click="loadJSON($event)" aria-label="Load JSON">
           Load JSON
         </md-button>
@@ -34,6 +31,9 @@
             <tree-container tree-data="data.tree" tree-node="data.tree.root" parent-node="null" layout-padding></tree-container>
         </md-container>
     </section>
+    <md-button class="md-raised md-accent toggle-json-fab" ng-click="toggleJSONView()" aria-label="Toggle JSON View">
+          <i class="fa fa-caret-left"></i><span style="margin-left: 8px;">JSON View</span>
+        </md-button>
     <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="json-view">
         <md-input-container layout="column" flex>
             <textarea class="json-view" ng-model="data.tree.json" aria-label="JSON format" disabled></textarea>
