@@ -7,7 +7,7 @@ app.controller('treeContainerCtrl', ['$scope', function($scope) {
 
 		// console.log('Add node was pressed');
 		angular.copy($scope.treeData.NODE_TEMPLATE, tempNode);
-		
+
 		if ($scope.parentNode && $scope.parentNode.$$parents) {
 			angular.copy($scope.parentNode.$$parents, parents);
 			parents.push($scope.parentNode.$$hashKey);

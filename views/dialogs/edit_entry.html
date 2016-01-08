@@ -5,9 +5,9 @@
 			<span flex></span>
 		</section>
 	</md-toolbar>
-	
+
 	<md-dialog-content>
-		<md-input-container>
+		<md-input-container style="padding-top:20px;">
 			<label>Description</label>
 			<textarea ng-model="data.desc" style="width: 800px"></textarea>
 		</md-input-container>
@@ -28,7 +28,7 @@
 	        <section class="node-value" flex >{{data.value | byteify}}</section>
         </md-whiteframe>
 	</md-dialog-content>
-	
+
 	<section class="md-actions" layout="row">
 		<span flex></span>
 		<md-button ng-click="cancel()" class="md-primary">

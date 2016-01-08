@@ -1,26 +1,26 @@
-<div>
-    
+<div ng-if="!treeNode.$$is_hidden_by_parent">
+
     <section layout="row" layout-align="start center" layout-wrap>
-        <md-button class="md-fab md-mini" ng-click="removeNode()" aria-label="remove node">
+        <md-button class="md-icon-button md-mini align-md-input" ng-click="removeNode()" aria-label="remove node">
             <i class="fa fa-trash-o"></i>
         </md-button>
-        <md-switch ng-model="treeNode.is_enabled" aria-label="Is the node enabled?" ng-change="toggleEntry();">
+        <md-switch class="align-md-input" ng-model="treeNode.is_enabled" aria-label="Is the node enabled?" ng-change="toggleEntry();">
             {{UI.enabled_caption}}
         </md-switch>
-        <md-switch ng-model="treeNode.is_container_type" aria-label="Is it a container type?" ng-change="toggleContainerType();">
+        <md-switch class="align-md-input" ng-model="treeNode.is_container_type" aria-label="Is it a container type?" ng-change="toggleContainerType();">
             {{UI.container_type_caption}}
-        </md-switch>        
+        </md-switch>
         <md-input-container ng-if="treeNode.is_container_type" style="min-width: 300px;" flex>
             <label> Description </label>
             <input ng-model="treeNode.desc" ng-change="treeData.updateJson();"/>
         </md-input-container>
-        <md-button ng-if="!treeNode.is_container_type" class="md-primary" ng-click="showEditDialog($event)" aria-label="edit entry">
+        <md-button ng-if="!treeNode.is_container_type" class="align-md-input md-primary" ng-click="showEditDialog($event)" aria-label="edit entry">
             Edit Entry
         </md-button>
-        
-    </section>       
-    
-    <section layout="column" ng-if="treeNode.is_container_type">
+
+    </section>
+
+    <section layout="column" ng-if="treeNode.is_container_type && treeNode.is_enabled">
         <tree-container style="margin-left: 64px;" tree-data="treeData" tree-node="treeNode.children" parent-node="treeNode"></tree-container>
     </section>
 
@@ -39,5 +39,5 @@
             <textarea class="entry-preview" ng-model="treeNode.$$preview" md-no-autogrow disabled></textarea>
         </md-input-container> -->
     </md-whiteframe>
-    
+
 </div>
