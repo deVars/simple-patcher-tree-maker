@@ -9,9 +9,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-    <link rel="stylesheet" type="text/css" href="./bower_components/angular-material/angular-material.min.css" />
-    <link rel="stylesheet" type="text/css" href="./bower_components/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="./css/app.css" />
+    <script type="text/javascript" src="main.js"></script>
 </head>
 
 <body ng-controller="mainCtrl">
@@ -36,22 +34,9 @@
         </md-button>
     <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="json-view">
         <md-input-container layout="column" flex>
-            <textarea class="json-view" ng-model="data.tree.json" aria-label="JSON format" readonly="readonly"></textarea>
+            <pre class="json-view" ng-bind="data.tree.json"></pre>
         </md-input-container>
     </md-sidenav>
-
-    <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
-    <!-- // <script type="text/javascript" src="bower_components/angular/angular.min.js"></script> -->
-    <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.min.js"></script>
-    <script type="text/javascript" src="./bower_components/angular-aria/angular-aria.min.js"></script>
-    <script type="text/javascript" src="./bower_components/angular-material/angular-material.min.js"></script>
-    <script type="text/javascript" src="./js/app.js"></script>
-    <script type="text/javascript" src="./js/controllers/main.js"></script>
-    <script type="text/javascript" src="./js/controllers/tree_container.js"></script>
-    <script type="text/javascript" src="./js/controllers/tree_entry.js"></script>
-    <script type="text/javascript" src="./js/directives/tree_container.js"></script>
-    <script type="text/javascript" src="./js/directives/tree_entry.js"></script>
-    <script type="text/javascript" src="./js/filters/byteify.js"></script>
 </body>
 
 </html>

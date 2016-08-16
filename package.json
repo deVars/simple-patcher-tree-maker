@@ -10,9 +10,29 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-htmlmin": "^0.1.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-material": "^1.1.0-rc.5",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.13.2",
+    "css-loader": "~0.14",
+    "file-loader": "^0.9.0",
+    "font-awesome": "^4.6.3",
+    "html-loader": "^0.4.3",
+    "jshint": "^2.9.2",
+    "jshint-loader": "^0.8.3",
+    "ng-annotate-loader": "^0.1.1",
+    "postcss-loader": "^0.10.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/webpack-dev-server --hot --inline"
   },
   "keywords": [
     "simple",
@@ -21,5 +41,5 @@
     "angular-material"
   ],
   "author": "Roseller M. Velicaria, Jr.",
-  "license": "Apache"
+  "license": "Apache-2.0"
 }
