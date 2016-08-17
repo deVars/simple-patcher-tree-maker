@@ -12,6 +12,7 @@ export default app => {
       restrict: `E`,
       controller: TreeEntryController,
       controllerAs: `$ctrl`,
+      scope: {},
       bindToController: {
         treeData: `=`,
         treeNode: `=`
