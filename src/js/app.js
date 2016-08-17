@@ -13,3 +13,4 @@ require('./controllers')(app);
 require('./directives')(app);
 require('./filters')(app);
 require('./TreeEntry')(app);
+require('./TreeContainer')(app);
