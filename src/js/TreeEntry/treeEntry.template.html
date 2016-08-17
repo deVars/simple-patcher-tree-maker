@@ -1,0 +1,32 @@
+<div ng-if="!treeNode.$$is_hidden_by_parent">
+  <section layout="row" layout-align="start center" layout-wrap>
+    <md-button class="md-icon-button md-mini align-md-input" ng-click="$ctrl.removeNode()" aria-label="remove node">
+        <md-icon class="fa" md-font-icon="fa-trash"/>
+    </md-button>
+    <md-switch class="align-md-input" ng-model="$ctrl.treeNode.is_enabled" aria-label="Is the node enabled?" ng-change="$ctrl.toggleEntry();">
+        {{$ctrl.switchLabel}}
+    </md-switch>
+    <md-switch class="align-md-input" ng-model="$ctrl.treeNode.is_container_type" aria-label="Is it a container type?" ng-change="$ctrl.toggleNodeType();">
+        {{$ctrl.nodeType}}
+    </md-switch>
+    
+      <md-input-container ng-if="$ctrl.treeNode.is_container_type" style="min-width: 300px;" flex>
+          <label> Description </label>
+          <input ng-model="$ctrl.treeNode.desc" ng-change="$ctrl.treeData.updateJson();"/>
+      </md-input-container>
+
+    <md-button ng-if="!$ctrl.treeNode.is_container_type" class="align-md-input md-primary" ng-click="$ctrl.showEditDialog($event)" aria-label="edit entry">
+        Edit Entry
+    </md-button>
+  </section>
+
+  <section layout="column" ng-if="$ctrl.treeNode.is_container_type && $ctrl.treeNode.is_enabled">
+      <tree-container style="margin-left: 64px;" tree-data="$ctrl.treeData" tree-node="$ctrl.treeNode.children" parent-node="$ctrl.treeNode"></tree-container>
+  </section>
+
+  <section ng-if="!$ctrl.treeNode.is_container_type" md-whiteframe="2" class="node-entry" layout="row" layout-sm="column" layout-align="start center" offset="5" layout-padding>
+      <section class="node-description" flex="30">{{$ctrl.treeNode.desc}}</section>
+      <section class="node-offset" flex="10">{{$ctrl.treeNode.offset}}</section>
+      <section class="node-value" flex >{{$ctrl.treeNode.value | byteify}}</section>
+  </section>
+</div>

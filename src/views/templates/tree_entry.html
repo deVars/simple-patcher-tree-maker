@@ -22,7 +22,7 @@
       <tree-container style="margin-left: 64px;" tree-data="treeData" tree-node="treeNode.children" parent-node="treeNode"></tree-container>
   </section>
 
-  <md-whiteframe ng-if="!treeNode.is_container_type" class="md-whiteframe-z2 node-entry" layout="row" layout-sm="column" layout-align="start center" offset="5" layout-padding>
+  <section ng-if="!treeNode.is_container_type" md-whiteframe="2" class="node-entry" layout="row" layout-sm="column" layout-align="start center" offset="5" layout-padding>
       <section class="node-description" flex="30">{{treeNode.desc}}</section>
       <section class="node-offset" flex="10">{{treeNode.offset}}</section>
       <section class="node-value" flex >{{treeNode.value | byteify}}</section>
@@ -36,5 +36,5 @@
           <label>Preview</label>
           <textarea class="entry-preview" ng-model="treeNode.$$preview" md-no-autogrow disabled></textarea>
       </md-input-container> -->
-  </md-whiteframe>
+  </section>
 </div>
