@@ -8,12 +8,15 @@
 
   <md-dialog-content layout-padding>
     <div>
-      <md-input-container>
-        <label>Description</label>
-        <textarea ng-model="data.desc"></textarea>
-      </md-input-container>
-      <section layout='row'>
-        <md-input-container flex-gt-sm="10" flex-sm='25'>
+      <section layout="row">
+        <md-input-container flex>
+          <label>Description</label>
+          <textarea ng-model="data.desc"></textarea>
+        </md-input-container>
+      </section>
+      
+      <section layout="row">
+        <md-input-container flex-gt-md="10" flex="20">
           <label>Offset</label>
           <input ng-model="data.offset" required></textarea>
         </md-input-container>
