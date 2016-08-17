@@ -10,7 +10,6 @@ require('angular-material');
 var app = angular.module('dv-sptm', ['ngMaterial']);
 
 require('./controllers')(app);
-require('./directives')(app);
 require('./filters')(app);
 require('./TreeEntry')(app);
 require('./TreeContainer')(app);
