@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="dv-sptm" ng-strict-di>
+<html>
 
 <head>
     <title>Simple-patcher Tree-maker</title>
@@ -12,31 +12,8 @@
     <script type="text/javascript" src="main.js"></script>
 </head>
 
-<body ng-controller="mainCtrl">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-        <h2>
-          <span>Simple Patcher Tree Maker</span>
-        </h2>
-        <span flex></span>
-        <md-button ng-click="loadJSON($event)" aria-label="Load JSON">
-          Load JSON
-        </md-button>
-      </div>
-    </md-toolbar>
-    <section layout="row">
-        <md-container layout="column" flex>
-            <tree-container tree-data="data.tree" tree-node="data.tree.root" parent-node="null" layout-padding></tree-container>
-        </md-container>
-    </section>
-    <md-button class="md-raised md-accent toggle-json-fab" ng-click="toggleJSONView()" aria-label="Toggle JSON View">
-          <i class="fa fa-caret-left"></i><span style="margin-left: 8px;">JSON View</span>
-        </md-button>
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="json-view">
-        <md-input-container layout="column" flex>
-            <pre class="json-view" ng-bind="data.tree.json"></pre>
-        </md-input-container>
-    </md-sidenav>
+<body ng-app="dv-sptm" ng-strict-di>
+    <app></app>
 </body>
 
 </html>

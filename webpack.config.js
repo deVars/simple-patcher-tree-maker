@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path');
 let config = {
-      entry: './src/js/app.js',
+      entry: './src/js/index.js',
       output: {
         path: __dirname,
         filename: 'main.js'

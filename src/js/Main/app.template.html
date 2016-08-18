@@ -1,0 +1,30 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2>
+      <span>Simple Patcher Tree Maker</span>
+    </h2>
+    <span flex></span>
+    <md-button ng-click="$ctrl.loadJSON($event)" aria-label="Load JSON">
+      Load JSON
+    </md-button>
+  </div>
+</md-toolbar>
+
+<section layout="row">
+    <md-container layout="column" flex>
+        <tree-container tree-data="$ctrl.tree" tree-node="$ctrl.tree.root" parent-node="null" layout-padding></tree-container>
+    </md-container>
+</section>
+
+<md-button class="md-raised md-accent toggle-json-fab" ng-click="$ctrl.toggleJSONView()" aria-label="Toggle JSON View">
+  <md-icon class="fa" md-font-icon="fa-caret-left"/>
+  <span style="margin-left: 8px;">
+    JSON View
+  </span>
+</md-button>
+
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="json-view">
+  <md-input-container layout="column" flex>
+    <pre class="json-view" ng-bind="$ctrl.tree.root | json"></pre>
+  </md-input-container>
+</md-sidenav>

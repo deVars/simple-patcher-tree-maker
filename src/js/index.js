@@ -7,9 +7,11 @@ require('angular-animate');
 require('angular-aria');
 require('angular-material');
 
-var app = angular.module('dv-sptm', ['ngMaterial']);
+var app = angular
+  .module('dv-sptm', ['ngMaterial'])
+  .controller('MainCtrl', function() {});
 
-require('./controllers')(app);
 require('./filters')(app);
+require('./Main')(app);
 require('./TreeEntry')(app);
 require('./TreeContainer')(app);
