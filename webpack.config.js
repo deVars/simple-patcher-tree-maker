@@ -1,10 +1,15 @@
 'use strict'
-const path = require('path');
+const path = require(`path`),
+      webpack = require(`webpack`);
+const BANNER = `Simple Patcher Tree-maker\n` + 
+  `Roseller M. Velicaria, Jr.\n` + 
+  `github.com/devars\n` + 
+  `${new Date()}`;
 let config = {
       entry: './src/js/index.js',
       output: {
         path: __dirname,
-        filename: 'main.js'
+        filename: 'dist/main.js'
       },
       module: {
         loaders: [
@@ -14,11 +19,21 @@ let config = {
           getJSLoaders()
         ]
       },
-      devtool: 'source-map',
+      plugins: [new webpack.BannerPlugin(BANNER, {entryOnly: true})],
       jshint: {
         node: true
       }
     };
+
+if (process.env.NODE_ENV === `PROD`) {
+  config.plugins.push(new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({compress:{}})
+  );
+}
+
+if (process.env.NODE_ENV === `DEV`) {
+  config.devtool = `source-map`;
+}
 
 function getCSSLoaders() {
   return {
@@ -46,7 +61,7 @@ function getHTMLLoaders() {
 function getFontLoaders() {
   return {
     test: /\.(eot|woff2?|svg|ttf)(\?v=\d\.\d\.\d)?/,
-    loaders: ['file']
+    loaders: ['file?name=dist/[sha512:hash:base64].[ext]']
   }
 }
 
